@@ -1,9 +1,10 @@
 package MCCtest;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.support.ui.Select;
 import java.util.concurrent.TimeUnit;
 
 public class MCCtest {
@@ -30,13 +31,24 @@ public class MCCtest {
         // eind datum invoeren
         driver.findElement(By.id("end-date")).sendKeys("11/28/2019, 3:25 PM");
         System.out.println("naam onderzoek, eigenaar, onderzoeksgebied, beschrijving, start datum en eind datum zijn ingevoerd");
+
+        // selecteer onderzoekstype
+        driver.findElement(By.id("mat-select-2")).click();
+        driver.findElement(By.id("mat-option-3")).click();
+        System.out.println("Onderzoekstype is geselecteerd");
+
         // selecteer bron
-////        driver.findElement(By.xpath("/html/body/app-root/app-admin-layout/div/div[2]/div/app-research/div[2]/div/a")).click();
-//        driver.findElement(By.xpath("mat-select-2 > div:nth-child(1) > div:nth-child(1)")).click();
-////        driver.findElement(By.cssSelector("mat-option-9")).click();
-//        System.out.println("Eerste bron is geselecteerd");
+        driver.findElement(By.id("mat-select-1")).click();
+        driver.findElement(By.id("mat-option-6")).click();
+        System.out.println("Bron is geselecteerd");
 
-
-//        driver.findElement(By.xpath("")).click();
+    // selecteer voyager
+        driver.findElement(By.className("cdk-overlay-container")).click();
+        driver.findElement(By.id("mat-select-3")).click();
+        driver.findElement(By.id("mat-option-8")).click();
+        driver.findElement(By.className("cdk-overlay-container")).click();
+        System.out.println("Voyager is geselecteerd");
+        // Klik Volgende stap
+        driver.findElement(By.xpath("/html/body/app-root/app-admin-layout/div/div[2]/div/app-add-research/div/div/div/div[2]/mat-horizontal-stepper/div[2]/div[1]/form/div[2]/button")).click();
     }
     }
