@@ -13,8 +13,8 @@ public class MCCtest {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\t.bult.CIMSOLUTIONS\\Downloads\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("http://localhost:4200/app/research");
-//        driver.get("http://172.16.0.45/app#/research");
+        driver.get("http://localhost:4200/#/research");
+//        driver.get("http://172.16.0.45/app/#/research");
 //        driver.findELement(By.id("")).sendKeys("");
         driver.findElement(By.xpath("/html/body/app-root/app-admin-layout/div/div[2]/div/app-research/div[2]/div/a")).click();
         System.out.println("Er is op knop onderzoek aanmaken geklikt");
@@ -42,13 +42,38 @@ public class MCCtest {
         driver.findElement(By.id("mat-option-6")).click();
         System.out.println("Bron is geselecteerd");
 
-    // selecteer voyager
+    // selecteer voyager met sensor temperatuur
         driver.findElement(By.className("cdk-overlay-container")).click();
         driver.findElement(By.id("mat-select-3")).click();
         driver.findElement(By.id("mat-option-8")).click();
         driver.findElement(By.className("cdk-overlay-container")).click();
         System.out.println("Voyager is geselecteerd");
+        // wachten
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         // Klik Volgende stap
         driver.findElement(By.xpath("/html/body/app-root/app-admin-layout/div/div[2]/div/app-add-research/div/div/div/div[2]/mat-horizontal-stepper/div[2]/div[1]/form/div[2]/button")).click();
+
+        // ------------------------------------
+        // STAP 2
+        // ------------------------------------
+
+//        Selecteer interval voor temperatuur
+        driver.findElement(By.id("mat-select-4")).click();
+        driver.findElement(By.id("mat-option-9")).click();
+        System.out.println("Interval voor temperatuur is geselecteerd");
+        // wachten
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        Klik op volgende stap
+        driver.findElement(By.xpath("//*[@id=\"cdk-step-content-0-1\"]/form/div[2]/button[1]")).click();
+
+        // ------------------------------------
+        // STAP 3
+        // ------------------------------------
+
+        // wachten
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        Klik op onderzoek aanmaken
+        driver.findElement(By.xpath("//*[@id=\"cdk-step-content-0-2\"]/div/button[1]")).click();
+        System.out.println("Onderzoek wordt aangemaakt");
     }
     }
